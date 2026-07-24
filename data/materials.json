@@ -1,0 +1,291 @@
+{
+  "_comment": "Material + thickness LIST + non-sensitive layout for the customer dropdown and sheet preview. Safe to expose publicly (NO prices here). Edit with admin.html rather than by hand. fullSheetMin: true = custom-order material (charge a full sheet, offcut goes to the customer); false = stock (area-priced, no minimum). assistGas / airMaxThicknessIn drive the gas surcharge. sheets = available sizes; holderOffsetIn is trimmed off each X end for tool holders (usable 23x24 and 11x12). stockSheetId is the size held in stock. Aluminum 5052-H32 and Stainless T304 are wired to MakerStock. Steel/brass/copper are manual specialty extras. densityLbIn3 = lb per cubic inch (future weight calc).",
+  "layout": {
+    "sheet": {
+      "widthIn": 24,
+      "heightIn": 24
+    },
+    "sheets": [
+      {
+        "id": "24x24",
+        "widthIn": 24,
+        "heightIn": 24
+      },
+      {
+        "id": "12x12",
+        "widthIn": 12,
+        "heightIn": 12
+      }
+    ],
+    "stockSheetId": "24x24",
+    "holderOffsetIn": 0.5,
+    "edgeReserveIn": 0.125,
+    "maxPartIn": 24,
+    "marginIn": 0.25,
+    "gapNestIn": 0.1,
+    "gapPlainIn": 0.2,
+    "allowRotate": true,
+    "pricesUpdated": "2026-07-14",
+    "pricesUpdatedMakerstock": "2026-07-23",
+    "pricesUpdatedManual": "2026-07-24",
+    "stockValidityDays": 14,
+    "customValidityDays": 7,
+    "pricingEstimateNote": "Pricing is an estimate based on material costs as they were loaded into this tool on {date}, and is subject to change with market volatility. For current pricing, email Paul@ksoldesigns.com and he will refresh it.",
+    "requestOnlyMessage": "Pricing for this material is too volatile to quote automatically right now. Email Paul@ksoldesigns.com with your part and quantity and he'll send you a current price.",
+    "unavailableMessage": "This material is temporarily unavailable from our supplier. Please contact us and we'll source it or suggest an alternative.",
+    "notCurrentNote": "Material price not current — price used from {date}.",
+    "notCurrentQuoteNote": "Material price not current at time of quote. Material pricing from {date} used.",
+    "shippingNote": "Prices exclude delivery — freight is billed at actual cost, or arrange for free local pickup in the Spokane Valley area.",
+    "leadTimeNote": "Typical lead time: a couple of days for in-stock materials, about 2 weeks for readily available custom-order materials."
+  },
+  "materials": [
+    {
+      "id": "aluminum",
+      "name": "Aluminum 5052-H32",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.097,
+      "makerstockHandle": "aluminum",
+      "thicknesses": [
+        {
+          "label": "0.032\" (20 ga)",
+          "in": 0.032,
+          "makerstockSku": "ALU-5052-032-24-24",
+          "makerstockSku12": "ALU-5052-032-12-12"
+        },
+        {
+          "label": "0.040\" (18 ga)",
+          "in": 0.04,
+          "makerstockSku": "ALU-5052-040-24-24",
+          "makerstockSku12": "ALU-5052-040-12-12"
+        },
+        {
+          "label": "0.063\" (1/16\")",
+          "in": 0.063,
+          "makerstockSku": "ALU-5052-063-24-24",
+          "makerstockSku12": "ALU-5052-063-12-12"
+        },
+        {
+          "label": "1/8\" (0.125\")",
+          "in": 0.125,
+          "makerstockSku": "ALU-5052-125-24-24",
+          "makerstockSku12": "ALU-5052-125-12-12"
+        }
+      ]
+    },
+    {
+      "id": "anodized-clear",
+      "name": "Clear Satin Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-satin-clear",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": "ALU-CLR-032-24-24",
+          "makerstockSku12": "ALU-CLR-032-12-12"
+        }
+      ]
+    },
+    {
+      "id": "anodized-gold",
+      "name": "Gold Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-gold",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": "ALU-GOL-032-24-24",
+          "makerstockSku12": "ALU-GOL-032-12-12"
+        }
+      ]
+    },
+    {
+      "id": "anodized-black",
+      "name": "Black Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-midnight-black",
+      "thicknesses": [
+        {
+          "label": "0.040\"",
+          "in": 0.04,
+          "makerstockSku": "ALU-BLK-040-24-24",
+          "makerstockSku12": "ALU-BLK-040-12-12"
+        }
+      ]
+    },
+    {
+      "id": "anodized-champagne",
+      "name": "Champagne Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-champagne",
+      "thicknesses": [
+        {
+          "label": "0.040\"",
+          "in": 0.04,
+          "makerstockSku": "ALU-CHA-040-24-24",
+          "makerstockSku12": "ALU-CHA-040-12-12"
+        }
+      ]
+    },
+    {
+      "id": "anodized-bronze",
+      "name": "Bronze Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-cocoa-medium-bronze",
+      "thicknesses": [
+        {
+          "label": "0.040\"",
+          "in": 0.04,
+          "makerstockSku": "ALU-COC-040-24-24",
+          "makerstockSku12": "ALU-COC-040-12-12"
+        }
+      ]
+    },
+    {
+      "id": "stainless",
+      "name": "Stainless Steel T304",
+      "fullSheetMin": false,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.289,
+      "makerstockHandle": "stainless-steel-t304",
+      "thicknesses": [
+        {
+          "label": "22 ga (0.030\")",
+          "in": 0.03,
+          "makerstockSku": "STE-304-030-24-24",
+          "makerstockSku12": "STE-304-030-12-12"
+        },
+        {
+          "label": "16 ga (0.060\")",
+          "in": 0.06,
+          "makerstockSku": "STE-304-060-24-24",
+          "makerstockSku12": "STE-304-060-12-12"
+        }
+      ]
+    },
+    {
+      "id": "stainless-no4",
+      "name": "Stainless 304 — 14 ga, No. 4 Brushed",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.289,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "14 ga (0.075\")",
+          "in": 0.075,
+          "makerstockSku": ""
+        }
+      ]
+    },
+    {
+      "id": "stainless-2b",
+      "name": "Stainless 304 — 14 ga, 2B Mill Finish",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.289,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "14 ga (0.075\")",
+          "in": 0.075,
+          "makerstockSku": ""
+        }
+      ]
+    },
+    {
+      "id": "steel",
+      "name": "Carbon Steel Cold Roll (A1008)",
+      "fullSheetMin": true,
+      "assistGas": "oxygen",
+      "airMaxThicknessIn": 0.03,
+      "densityLbIn3": 0.284,
+      "makerstockHandle": "carbon-steel-cold-rolled-astm-a1008",
+      "thicknesses": [
+        {
+          "label": "24 ga (0.0239\")",
+          "in": 0.0239,
+          "makerstockSku": "CAR-COL-024-24-24",
+          "makerstockSku12": "CAR-COL-024-12-12"
+        },
+        {
+          "label": "20 ga (0.0359\")",
+          "in": 0.0359,
+          "makerstockSku": "CAR-COL-035-24-24",
+          "makerstockSku12": "CAR-COL-035-12-12"
+        },
+        {
+          "label": "16 ga (0.0598\")",
+          "in": 0.0598,
+          "makerstockSku": "CAR-COL-060-24-24",
+          "makerstockSku12": "CAR-COL-060-12-12"
+        }
+      ]
+    },
+    {
+      "id": "brass",
+      "name": "Brass 260",
+      "quoteOnRequest": true,
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.307,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": ""
+        },
+        {
+          "label": "0.064\"",
+          "in": 0.064,
+          "makerstockSku": ""
+        }
+      ]
+    },
+    {
+      "id": "copper",
+      "name": "Copper 110",
+      "quoteOnRequest": true,
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.323,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": ""
+        },
+        {
+          "label": "0.064\"",
+          "in": 0.064,
+          "makerstockSku": ""
+        }
+      ]
+    }
+  ]
+}

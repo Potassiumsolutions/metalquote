@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Metal Part Quote</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0f1420" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+</head>
+<body>
+  <main class="mq">
+    <header class="mq-head">
+      <div class="head-actions">
+        <button id="about-btn" class="about-btn" type="button">About</button>
+        <button id="inventory-btn" class="about-btn" type="button" hidden>📦 Inventory</button>
+        <button id="settings-btn" class="about-btn" type="button" hidden>⚙ Settings</button>
+      </div>
+      <div class="head-status">
+        <button id="install-btn" class="about-btn" type="button" hidden>⤓ Install app</button>
+        <span id="mode-badge" class="mode-badge" hidden title="Prices are coming from your local demo-prices.json, not the Worker (BACKEND_URL is blank).">Demo mode</span>
+        <button id="owner-badge" class="mode-badge owner-badge" type="button" hidden></button>
+      </div>
+      <svg class="mq-logo" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Potassium Solutions logo">
+        <g fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+          <text x="120" y="36" text-anchor="middle" font-size="40" font-weight="800" textLength="212" lengthAdjust="spacingAndGlyphs">Potassium</text>
+          <rect x="47" y="54" width="146" height="146" fill="none" stroke="currentColor" stroke-width="5"/>
+          <text x="120" y="76" text-anchor="middle" font-size="11">19</text>
+          <text x="104" y="170" text-anchor="middle" font-size="118" font-weight="800">K</text>
+          <text x="151" y="170" font-size="18" font-weight="800">S&#174;l</text>
+          <text x="120" y="192" text-anchor="middle" font-size="11">39.0983</text>
+          <text x="120" y="256" text-anchor="middle" font-size="40" font-weight="800" textLength="206" lengthAdjust="spacingAndGlyphs">Solutions</text>
+        </g>
+      </svg>
+      <h1>Instant Part Quote</h1>
+      <p class="mq-sub">Upload your part, pick your material, get a price.</p>
+    </header>
+
+    <div id="expiry-banner" class="expiry-banner" hidden></div>
+    <!-- Owner only: MakerStock moved sharply vs the deployed baseline -->
+    <div id="drift-banner" class="drift-banner" hidden></div>
+
+    <section class="mq-grid">
+      <!-- LEFT: inputs -->
+      <div class="mq-card">
+        <!-- Drop zone -->
+        <div id="drop" class="drop">
+          <input id="file" type="file" accept=".dxf,.svg" hidden />
+          <div class="drop-inner">
+            <div class="drop-icon">⬍</div>
+            <p><strong>Drop a file</strong> or <button type="button" id="browse" class="link">browse</button></p>
+            <p class="hint">DXF or SVG (the flat cut file)</p>
+          </div>
+        </div>
+        <div id="file-status" class="file-status" hidden></div>
+
+        <!-- Size (auto-filled from file, editable) -->
+        <fieldset class="row2">
+          <div>
+            <label>Width</label>
+            <div class="unit-input"><input id="width" type="number" step="0.001" min="0" /><span>in</span></div>
+          </div>
+          <div>
+            <label>Height</label>
+            <div class="unit-input"><input id="height" type="number" step="0.001" min="0" /><span>in</span></div>
+          </div>
+        </fieldset>
+
+        <!-- Material + thickness -->
+        <fieldset class="row2">
+          <div>
+            <label>Material</label>
+            <select id="material"></select>
+          </div>
+          <div>
+            <label>Thickness</label>
+            <select id="thickness"></select>
+          </div>
+        </fieldset>
+        <!-- Price-on-request material chosen: contact message in place of a quote -->
+        <p id="request-note" class="request-note" hidden></p>
+
+        <!-- Internal only: at-a-glance stock for the chosen material + thickness, by sheet size -->
+        <p id="stock-readout" class="stock-readout" hidden></p>
+
+        <!-- Qty + nesting -->
+        <fieldset class="row2">
+          <div>
+            <label>Quantity</label>
+            <input id="qty" type="number" min="1" step="1" value="1" />
+          </div>
+          <div class="nest-toggle">
+            <label>Nesting</label>
+            <label class="switch">
+              <input id="nest" type="checkbox" checked />
+              <span class="slider"></span>
+              <span class="switch-label">Pack parts for a better price</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <label>Sheet size preference</label>
+          <select id="sheet-pref">
+            <option value="auto" selected>Best price (automatic)</option>
+            <option value="small">Prefer 12×12</option>
+            <option value="large">Fewest sheets (24×24)</option>
+          </select>
+        </fieldset>
+
+        <!-- Owner only (internal edition): waive some/all of the per-sheet setup & handling fee.
+             Big multi-sheet jobs vary — a sparsely-nested sheet swaps in seconds, so you can cap
+             setup at the first 2 sheets or waive it entirely. Never shown to customers. -->
+        <fieldset id="setup-waive-field" hidden>
+          <label>Setup &amp; handling <span class="hint">· internal only</span></label>
+          <select id="setup-waive">
+            <option value="none" selected>Charge per sheet (normal)</option>
+            <option value="after2">Waive after first 2 sheets</option>
+            <option value="all">Waive entirely</option>
+          </select>
+          <p class="hint">Some sheets swap fast, some hold many parts and take longer. Waive setup on the quick ones. The waiver is shown as a line item on the quote.</p>
+        </fieldset>
+
+        <!-- Owner only (internal edition): force the parts-per-sheet count. The nester works on
+             bounding boxes, so a tapered part (sword, blade, hook) that really interlocks several
+             per sheet gets undercounted. Never shown to customers. -->
+        <fieldset id="pps-field" hidden>
+          <label>Parts per sheet <span class="hint">· internal only</span></label>
+          <input id="pps-override" type="number" min="0" step="1" placeholder="auto" inputmode="numeric" />
+          <p class="hint">Blank = the tool's own count. Set it when you know the real nest — the packer only sees bounding boxes, so tapered parts that interlock are undercounted. Applies to whichever sheet is used, so pair it with the sheet-size preference above.</p>
+        </fieldset>
+
+        <!-- Custom-order materials only: you're billed for a full sheet; the offcut ships only if requested. -->
+        <fieldset id="leftover-field" hidden>
+          <div class="nest-toggle">
+            <label>Leftover material</label>
+            <label class="switch">
+              <input id="ship-leftover" type="checkbox" />
+              <span class="slider"></span>
+              <span class="switch-label">Ship the leftover with my order</span>
+            </label>
+          </div>
+          <p class="hint">This material is cut from a full sheet you're billed for. By default we keep the offcut — check this to have the leftover shipped with your parts.</p>
+        </fieldset>
+
+        <!-- Shown only for single-part files that have interior features: cut the outer blank on the
+             laser, engrave the interior (lettering/logos) as a separate operation. -->
+        <fieldset id="engrave-field" hidden>
+          <div class="nest-toggle">
+            <label>Interior features</label>
+            <label class="switch">
+              <input id="engrave-interior" type="checkbox" />
+              <span class="slider"></span>
+              <span class="switch-label">Cut outer profile only — engrave interior separately</span>
+            </label>
+          </div>
+          <p class="hint">Turn this on when the interior detail (lettering, logos) is engraved rather than cut through. The quote then prices the cut blank only; engraving is handled separately.</p>
+        </fieldset>
+
+        <button id="quote-btn" class="primary" disabled>Get Quote</button>
+        <p id="error" class="error" hidden></p>
+      </div>
+
+      <!-- RIGHT: result + nesting preview -->
+      <div class="mq-card result" id="result-card">
+        <div id="result-empty" class="result-empty">
+          <p>Your quote and sheet layout will appear here.</p>
+        </div>
+
+        <div id="result" hidden>
+          <div class="price-big">
+            <span id="total">$0.00</span>
+            <span class="price-sub">total</span>
+          </div>
+          <div class="price-row">
+            <span id="perpart">$0.00 each</span>
+            <span id="qty-echo">× 1</span>
+          </div>
+          <!-- Supplier feed unreachable: priced from the last figure we got, and we say which day -->
+          <p id="notcurrent-note" class="notcurrent-note" hidden></p>
+
+          <div class="breakdown">
+            <div><span>Material</span><span id="bd-material">$0.00</span></div>
+            <div><span>Machine time <span id="bd-machine-note" class="hint"></span></span><span id="bd-machine">$0.00</span></div>
+            <div id="bd-cut-row" class="bd-cut" hidden><span>Cut distance / speed</span><span class="bd-cut-vals"><span id="bd-cut"></span><span id="bd-cut-metric"></span></span></div>
+            <div id="bd-gas-row" hidden><span>Gas surcharge</span><span id="bd-gas">$0.00</span></div>
+            <div><span>Setup &amp; handling<span id="setup-info" class="setup-info" hidden tabindex="0" role="button" aria-label="What setup and handling covers">ⓘ<span class="flyout"><strong>Setup &amp; handling</strong> — $5 per 12×12 sheet, $10 per 24×24. Covers unwrapping the sheet, loading it in the machine, hitting start, then removing and packaging the finished parts when the run is done.</span></span> <span id="bd-process-note" class="hint"></span></span><span id="bd-process">$0.00</span></div>
+            <div id="bd-min-row" hidden><span>Minimum order top-up</span><span id="bd-min">$0.00</span></div>
+            <div class="bd-total"><span>Total</span><span id="bd-total">$0.00</span></div>
+          </div>
+
+          <p id="engrave-note" class="min-note" hidden>Interior features not considered in this quote — priced for the cut outer profile (blank) only; engraving is handled separately.</p>
+
+          <div class="meta">
+            <span id="meta-fit"></span>
+            <span id="meta-sheets"></span>
+          </div>
+          <p id="min-note" class="min-note" hidden>Minimum order charge applied.</p>
+          <p id="owner-freight" class="min-note" hidden style="color:var(--accent);font-weight:600"></p>
+
+          <!-- Internal only: your raw cost + margin (never shown to customers) -->
+          <div id="cost-breakdown" class="cost-breakdown" hidden>
+            <h4>Your cost &amp; margin <span class="hint">· internal only</span></h4>
+            <div><span>Material</span><span id="cb-material">$0.00</span></div>
+            <div><span>Inbound freight</span><span id="cb-freight">$0.00</span></div>
+            <div><span>Machine</span><span id="cb-machine">$0.00</span></div>
+            <div id="cb-gas-row"><span>Gas</span><span id="cb-gas">$0.00</span></div>
+            <div><span>Setup &amp; handling</span><span id="cb-process">$0.00</span></div>
+            <div class="cb-sub"><span>Total cost</span><span id="cb-totalcost">$0.00</span></div>
+            <div><span>Markup</span><span id="cb-markup">×1.0</span></div>
+            <div class="cb-sub"><span>Price</span><span id="cb-price">$0.00</span></div>
+            <div class="cb-margin"><span>Margin</span><span id="cb-margin">$0.00</span></div>
+          </div>
+
+          <p id="sheet-note" class="min-note" hidden></p>
+          <p id="stock-offer" class="min-note" hidden>Ordering this material regularly? Contact us for options to stock it for you — minimum purchase frequency applies.</p>
+
+          <!-- Internal only: pull the sheets this quote needs out of the inventory module -->
+          <div id="inv-deduct" class="inv-deduct" hidden>
+            <div class="inv-line">
+              <span id="inv-onhand"></span>
+              <label class="inv-qty">Remove
+                <input id="inv-qty" type="number" min="0" step="1" value="0" inputmode="numeric" />
+                sheet(s)
+              </label>
+              <button id="inv-btn" class="ghost" type="button">Remove from stock</button>
+            </div>
+            <p id="inv-status" class="hint" hidden></p>
+          </div>
+
+          <!-- Save a viewable copy of the quote (everyone) -->
+          <div class="quote-actions">
+            <button id="save-pdf" class="ghost" type="button">Save / Print PDF</button>
+            <button id="save-jpg" class="ghost" type="button">Save as JPG</button>
+          </div>
+
+          <!-- Owner-only: turn this quote into a QuickBooks invoice file -->
+          <div id="qb-export" class="qb-export" hidden>
+            <h3>Export to QuickBooks</h3>
+            <label>Customer name
+              <input id="qb-customer" type="text" placeholder="e.g. Acme Fabrication" autocomplete="off" />
+            </label>
+            <label>Invoice / quote #
+              <input id="qb-docnum" type="text" placeholder="auto" autocomplete="off" />
+            </label>
+            <details class="qb-accts">
+              <summary>QuickBooks account names (set once)</summary>
+              <label>A/R account
+                <input id="qb-ar" type="text" placeholder="Accounts Receivable" autocomplete="off" />
+              </label>
+              <label>Income account
+                <input id="qb-income" type="text" placeholder="Sales" autocomplete="off" />
+              </label>
+              <p class="hint">These must match your QuickBooks. Saved on this device.</p>
+            </details>
+            <button id="qb-btn" class="primary" type="button">Download .IIF for QuickBooks</button>
+            <p id="qb-status" class="hint" hidden></p>
+          </div>
+
+          <div class="nest-preview">
+            <h3>Sheet layout <span class="hint">(<span id="sheet-dim">24″ × 24″</span>)</span></h3>
+            <div id="nest-svg"></div>
+            <p id="sheet-cap" class="hint"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mq-foot">
+      <span>Prices are estimates. Final quote confirmed after file review.</span>
+      <span id="shipping-note" class="validity-note"></span>
+      <span id="lead-note" class="validity-note"></span>
+      <span id="validity-note" class="validity-note"></span>
+      <span id="pricing-note" class="validity-note"></span>
+      <span class="mq-credit">© <span id="foot-year">2026</span> Ksol Designs · Potassium Solutions · <a href="#" id="terms-link">Terms &amp; Conditions</a> · <a href="#" id="about-link">About</a></span>
+    </footer>
+  </main>
+
+  <!-- About / How-to modal -->
+  <div id="about-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="about-title">
+      <button class="modal-close" data-close type="button" aria-label="Close">&times;</button>
+
+      <div class="about-brand">
+        <svg class="about-logo" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Potassium Solutions logo">
+          <g fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+            <text x="120" y="36" text-anchor="middle" font-size="40" font-weight="800" textLength="212" lengthAdjust="spacingAndGlyphs">Potassium</text>
+            <rect x="47" y="54" width="146" height="146" fill="none" stroke="currentColor" stroke-width="5"/>
+            <text x="120" y="76" text-anchor="middle" font-size="11">19</text>
+            <text x="104" y="170" text-anchor="middle" font-size="118" font-weight="800">K</text>
+            <text x="151" y="170" font-size="18" font-weight="800">S&#174;l</text>
+            <text x="120" y="192" text-anchor="middle" font-size="11">39.0983</text>
+            <text x="120" y="256" text-anchor="middle" font-size="40" font-weight="800" textLength="206" lengthAdjust="spacingAndGlyphs">Solutions</text>
+          </g>
+        </svg>
+        <div>
+          <h2 id="about-title">Instant Metal Part Quote</h2>
+          <p class="about-tag">Laser-cut metal parts, priced in seconds.</p>
+        </div>
+      </div>
+
+      <section class="about-sect">
+        <h3>How to use it</h3>
+        <ol class="about-steps">
+          <li><strong>Add your part.</strong> Drop or browse a <em>DXF</em> or <em>SVG</em> file. No file? Just type the width and height.</li>
+          <li><strong>Pick material &amp; thickness</strong> from the drop-downs.</li>
+          <li><strong>Set the quantity.</strong> Leave <em>Nesting</em> on for the best price — it packs your parts onto the sheet to save material.</li>
+          <li><strong>Click Get Quote.</strong> You'll see the price, a cost breakdown, and how your parts lay out on a sheet.</li>
+          <li><strong>Save a copy.</strong> Use <em>Save / Print PDF</em> or <em>Save as JPG</em> to keep or send the quote.</li>
+        </ol>
+        <p class="about-note">Prices are estimates — the final quote is confirmed after we review your file.</p>
+      </section>
+
+      <section class="about-sect" id="about-owner" hidden>
+        <h3>Setup &amp; handling <span class="hint">· internal only</span></h3>
+        <p class="about-note">Charged per sheet by size: <strong>$5</strong> per 12×12, <strong>$10</strong> per 24×24. Covers unwrapping the sheet, loading it in the machine, hitting start, then removing and packaging the finished parts once the run is done.</p>
+      </section>
+
+      <section class="about-sect">
+        <h3>Made by</h3>
+        <p class="about-credit"><strong>Ksol Designs</strong> · Potassium Solutions</p>
+        <p class="about-credit">Paul A.T. Ramey — CAD Artist / Designer / Maker</p>
+        <ul class="about-contact">
+          <li>📞 <a href="tel:+15094998911">509 499 8911</a></li>
+          <li>✉️ <a href="mailto:Paul@ksoldesigns.com">Paul@ksoldesigns.com</a></li>
+          <li>🌐 <a href="https://www.ksoldesigns.com" target="_blank" rel="noopener">www.ksoldesigns.com</a></li>
+          <li>★ <a href="https://www.patreon.com/KsolDesigns" target="_blank" rel="noopener">patreon.com/KsolDesigns</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- Terms & Conditions modal (list filled from TERMS in app.js so it matches the quote fine print) -->
+  <div id="terms-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="terms-title">
+      <button class="modal-close" data-close type="button" aria-label="Close">&times;</button>
+      <section class="about-sect">
+        <h2 id="terms-title">Terms &amp; Conditions</h2>
+        <ul id="terms-list" class="terms-list"></ul>
+        <p class="about-note">These terms print in fine detail on every saved quote.</p>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Metal Quote app icon">
+  <rect width="512" height="512" rx="96" fill="#0f1420"/>
+  <g transform="translate(102,76) scale(1.286)" fill="#e7ecf5" font-family="Arial, Helvetica, sans-serif">
+    <text x="120" y="36" text-anchor="middle" font-size="40" font-weight="800" textLength="212" lengthAdjust="spacingAndGlyphs">Potassium</text>
+    <rect x="47" y="54" width="146" height="146" fill="none" stroke="#e7ecf5" stroke-width="5"/>
+    <text x="120" y="76" text-anchor="middle" font-size="11">19</text>
+    <text x="104" y="170" text-anchor="middle" font-size="118" font-weight="800">K</text>
+    <text x="151" y="170" font-size="18" font-weight="800">S&#174;l</text>
+    <text x="120" y="192" text-anchor="middle" font-size="11">39.0983</text>
+    <text x="120" y="256" text-anchor="middle" font-size="40" font-weight="800" textLength="206" lengthAdjust="spacingAndGlyphs">Solutions</text>
+  </g>
+</svg>
