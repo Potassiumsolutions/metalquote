@@ -1,0 +1,2158 @@
+{
+  "_comment": "Material + thickness LIST + non-sensitive layout for the customer dropdown and sheet preview. Safe to expose publicly (NO prices here). Edit with admin.html rather than by hand. fullSheetMin: true = custom-order material (charge a full sheet, offcut goes to the customer); false = stock (area-priced, no minimum). assistGas / airMaxThicknessIn drive the gas surcharge. sheets = available sizes; holderOffsetIn is trimmed off each X end for tool holders (usable 23x24 and 11x12). stockSheetId is the size held in stock. Aluminum 5052-H32 and Stainless T304 are wired to MakerStock. Steel/brass/copper are manual specialty extras. densityLbIn3 = lb per cubic inch (future weight calc).",
+  "layout": {
+    "sheet": {
+      "widthIn": 24,
+      "heightIn": 24
+    },
+    "sheets": [
+      {
+        "id": "24x24",
+        "widthIn": 24,
+        "heightIn": 24
+      },
+      {
+        "id": "12x12",
+        "widthIn": 12,
+        "heightIn": 12
+      }
+    ],
+    "stockSheetId": "24x24",
+    "holderOffsetIn": 0.5,
+    "edgeReserveIn": 0.125,
+    "maxPartIn": 24,
+    "marginIn": 0.25,
+    "gapNestIn": 0.1,
+    "gapPlainIn": 0.2,
+    "allowRotate": true,
+    "pricesUpdated": "2026-07-14",
+    "pricesUpdatedMakerstock": "2026-09-02",
+    "pricesUpdatedManual": "2026-09-02",
+    "stockValidityDays": 14,
+    "customValidityDays": 7,
+    "pricingEstimateNote": "Pricing is an estimate based on material costs as they were loaded into this tool on {date}, and is subject to change with market volatility. For current pricing, email Paul@ksoldesigns.com and he will refresh it.",
+    "requestOnlyMessage": "Pricing for this material is too volatile to quote automatically right now. Email Paul@ksoldesigns.com with your part and quantity and he'll send you a current price.",
+    "unavailableMessage": "This material is temporarily unavailable from our supplier. Please contact us and we'll source it or suggest an alternative.",
+    "notCurrentNote": "Material price not current — price used from {date}.",
+    "notCurrentQuoteNote": "Material price not current at time of quote. Material pricing from {date} used.",
+    "shippingNote": "Prices exclude delivery — freight is billed at actual cost, or arrange for free local pickup in the Spokane Valley area.",
+    "leadTimeNote": "Typical lead time: a couple of days for in-stock materials, about 2 weeks for readily available custom-order materials.",
+    "asCutNote": "Pricing is for parts as they come off the laser — any surface finishing or edge prep (deburring, sanding, polishing) is not included.",
+    "quoteEmail": "Paul@ksoldesigns.com",
+    "machines": {
+      "acrylic": {
+        "label": "OMTech 100W CO2 — acrylic",
+        "holderOffsetIn": 0,
+        "edgeReserveIn": 0,
+        "stockSheetId": "24x24",
+        "maxPartIn": 40,
+        "sheets": [
+          {
+            "id": "12x12",
+            "widthIn": 12,
+            "heightIn": 12
+          },
+          {
+            "id": "24x24",
+            "widthIn": 24,
+            "heightIn": 24
+          },
+          {
+            "id": "24x36",
+            "widthIn": 24,
+            "heightIn": 36
+          }
+        ],
+        "engraverId": "co2"
+      },
+      "co2-wood": {
+        "label": "OMTech 100W CO2 — wood",
+        "holderOffsetIn": 0,
+        "edgeReserveIn": 0,
+        "stockSheetId": "24x24",
+        "maxPartIn": 40,
+        "sheets": [
+          {
+            "id": "8x12",
+            "widthIn": 8,
+            "heightIn": 12
+          },
+          {
+            "id": "12x12",
+            "widthIn": 12,
+            "heightIn": 12
+          },
+          {
+            "id": "24x24",
+            "widthIn": 24,
+            "heightIn": 24
+          },
+          {
+            "id": "24x36",
+            "widthIn": 24,
+            "heightIn": 36
+          }
+        ],
+        "engraverId": "co2"
+      },
+      "co2-leather": {
+        "label": "OMTech 100W CO2 — leather",
+        "holderOffsetIn": 0,
+        "edgeReserveIn": 0,
+        "stockSheetId": "24x24",
+        "maxPartIn": 40,
+        "sheets": [
+          {
+            "id": "8x12",
+            "widthIn": 8,
+            "heightIn": 12
+          },
+          {
+            "id": "12x12",
+            "widthIn": 12,
+            "heightIn": 12
+          },
+          {
+            "id": "24x24",
+            "widthIn": 24,
+            "heightIn": 24
+          },
+          {
+            "id": "24x36",
+            "widthIn": 24,
+            "heightIn": 36
+          }
+        ],
+        "engraverId": "co2"
+      }
+    },
+    "engravers": {
+      "f2ultra": {
+        "label": "xTool F2 Ultra UV",
+        "priority": 1,
+        "bedWIn": 7.87,
+        "bedHIn": 7.87,
+        "materials": [
+          "metal",
+          "acrylic",
+          "wood",
+          "leather"
+        ]
+      },
+      "fiber30": {
+        "label": "OMTech 30W fiber",
+        "priority": 2,
+        "bedWIn": 5.9,
+        "bedHIn": 5.9,
+        "materials": [
+          "metal"
+        ]
+      },
+      "co2": {
+        "label": "OMTech 100W CO2 (24×40)",
+        "priority": 3,
+        "bedWIn": 40,
+        "bedHIn": 24,
+        "materials": [
+          "acrylic",
+          "wood",
+          "leather"
+        ]
+      },
+      "metalfab": {
+        "label": "xTool MetalFab",
+        "priority": 4,
+        "bedWIn": 24,
+        "bedHIn": 24,
+        "materials": [
+          "metal"
+        ]
+      }
+    },
+    "engraverId": "metalfab"
+  },
+  "materials": [
+    {
+      "id": "aluminum",
+      "name": "Aluminum 5052-H32",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.097,
+      "makerstockHandle": "aluminum",
+      "thicknesses": [
+        {
+          "label": "0.032\" (20 ga)",
+          "in": 0.032,
+          "makerstockSku": "ALU-5052-032-24-24",
+          "makerstockSku12": "ALU-5052-032-12-12"
+        },
+        {
+          "label": "0.040\" (18 ga)",
+          "in": 0.04,
+          "makerstockSku": "ALU-5052-040-24-24",
+          "makerstockSku12": "ALU-5052-040-12-12"
+        },
+        {
+          "label": "0.063\" (1/16\")",
+          "in": 0.063,
+          "makerstockSku": "ALU-5052-063-24-24",
+          "makerstockSku12": "ALU-5052-063-12-12"
+        },
+        {
+          "label": "1/8\" (0.125\")",
+          "in": 0.125,
+          "makerstockSku": "ALU-5052-125-24-24",
+          "makerstockSku12": "ALU-5052-125-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "anodized-clear",
+      "name": "Clear Satin Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-satin-clear",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": "ALU-CLR-032-24-24",
+          "makerstockSku12": "ALU-CLR-032-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "anodized-gold",
+      "name": "Gold Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-gold",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": "ALU-GOL-032-24-24",
+          "makerstockSku12": "ALU-GOL-032-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "anodized-black",
+      "name": "Black Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-midnight-black",
+      "thicknesses": [
+        {
+          "label": "0.040\"",
+          "in": 0.04,
+          "makerstockSku": "ALU-BLK-040-24-24",
+          "makerstockSku12": "ALU-BLK-040-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "anodized-champagne",
+      "name": "Champagne Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-champagne",
+      "thicknesses": [
+        {
+          "label": "0.040\"",
+          "in": 0.04,
+          "makerstockSku": "ALU-CHA-040-24-24",
+          "makerstockSku12": "ALU-CHA-040-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "anodized-bronze",
+      "name": "Bronze Anodized Aluminum",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.098,
+      "makerstockHandle": "anodized-aluminum-cocoa-medium-bronze",
+      "thicknesses": [
+        {
+          "label": "0.040\"",
+          "in": 0.04,
+          "makerstockSku": "ALU-COC-040-24-24",
+          "makerstockSku12": "ALU-COC-040-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "stainless",
+      "name": "Stainless Steel T304",
+      "fullSheetMin": false,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.289,
+      "makerstockHandle": "stainless-steel-t304",
+      "thicknesses": [
+        {
+          "label": "22 ga (0.030\")",
+          "in": 0.03,
+          "makerstockSku": "STE-304-030-24-24",
+          "makerstockSku12": "STE-304-030-12-12"
+        },
+        {
+          "label": "18 ga (0.048\")",
+          "in": 0.048,
+          "makerstockSku": ""
+        },
+        {
+          "label": "16 ga (0.060\")",
+          "in": 0.06,
+          "makerstockSku": "STE-304-060-24-24",
+          "makerstockSku12": "STE-304-060-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "stainless-no4",
+      "name": "Stainless 304 — 14 ga, No. 4 Brushed",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.289,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "14 ga (0.075\")",
+          "in": 0.075,
+          "makerstockSku": ""
+        }
+      ],
+      "quoteOnRequest": false,
+      "category": "metal"
+    },
+    {
+      "id": "stainless-2b",
+      "name": "Stainless 304 — 14 ga, 2B Mill Finish",
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.289,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "14 ga (0.075\")",
+          "in": 0.075,
+          "makerstockSku": ""
+        }
+      ],
+      "quoteOnRequest": false,
+      "category": "metal"
+    },
+    {
+      "id": "steel",
+      "name": "Carbon Steel Cold Roll (A1008)",
+      "fullSheetMin": true,
+      "assistGas": "oxygen",
+      "airMaxThicknessIn": 0.03,
+      "densityLbIn3": 0.284,
+      "makerstockHandle": "carbon-steel-cold-rolled-astm-a1008",
+      "thicknesses": [
+        {
+          "label": "24 ga (0.0239\")",
+          "in": 0.0239,
+          "makerstockSku": "CAR-COL-024-24-24",
+          "makerstockSku12": "CAR-COL-024-12-12"
+        },
+        {
+          "label": "20 ga (0.0359\")",
+          "in": 0.0359,
+          "makerstockSku": "CAR-COL-035-24-24",
+          "makerstockSku12": "CAR-COL-035-12-12"
+        },
+        {
+          "label": "18 ga (0.0478\")",
+          "in": 0.0478,
+          "makerstockSku": ""
+        },
+        {
+          "label": "16 ga (0.0598\")",
+          "in": 0.0598,
+          "makerstockSku": "CAR-COL-060-24-24",
+          "makerstockSku12": "CAR-COL-060-12-12"
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "galvalume",
+      "name": "Galvalume Steel (AZ50)",
+      "fullSheetMin": false,
+      "assistGas": "oxygen",
+      "airMaxThicknessIn": 0.03,
+      "densityLbIn3": 0.283,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "18 ga (0.0516\")",
+          "in": 0.0516,
+          "makerstockSku": ""
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "brass",
+      "name": "Brass 260",
+      "quoteOnRequest": true,
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.307,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": ""
+        },
+        {
+          "label": "0.064\"",
+          "in": 0.064,
+          "makerstockSku": ""
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "copper",
+      "name": "Copper 110",
+      "quoteOnRequest": true,
+      "fullSheetMin": true,
+      "assistGas": "nitrogen",
+      "airMaxThicknessIn": 0.125,
+      "densityLbIn3": 0.323,
+      "makerstockHandle": "",
+      "thicknesses": [
+        {
+          "label": "0.032\"",
+          "in": 0.032,
+          "makerstockSku": ""
+        },
+        {
+          "label": "0.064\"",
+          "in": 0.064,
+          "makerstockSku": ""
+        }
+      ],
+      "category": "metal"
+    },
+    {
+      "id": "acrylic-clear",
+      "name": "Acrylic (Clear)",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "clear-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/16\" (1.5 mm)",
+          "in": 0.0625,
+          "makerstockSku12": "ACR-CLR-062-12-12",
+          "makerstockSku": "ACR-CLR-062-24-24",
+          "makerstockSku36": "ACR-CLR-062-24-36"
+        },
+        {
+          "label": "3/32\" (2.4 mm)",
+          "in": 0.09375,
+          "makerstockSku12": "ACR-CLR-093-12-12",
+          "makerstockSku": "ACR-CLR-093-24-24",
+          "makerstockSku36": "ACR-CLR-093-24-36"
+        },
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "ACR-CLR-125-12-12",
+          "makerstockSku": "ACR-CLR-125-24-24",
+          "makerstockSku36": "ACR-CLR-125-24-36"
+        },
+        {
+          "label": "3/16\" (4.7 mm)",
+          "in": 0.1875,
+          "makerstockSku12": "ACR-CLR-188-12-12",
+          "makerstockSku": "ACR-CLR-188-24-24",
+          "makerstockSku36": "ACR-CLR-188-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "ACR-CLR-250-12-12",
+          "makerstockSku": "ACR-CLR-250-24-24",
+          "makerstockSku36": "ACR-CLR-250-24-36"
+        }
+      ],
+      "category": "acrylic",
+      "finish": "clear"
+    },
+    {
+      "id": "acrylic-black",
+      "name": "Black Acrylic (Opaque)",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "black-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/16\" (1.5 mm)",
+          "in": 0.0625,
+          "makerstockSku12": "ACR-BLK-062-12-12",
+          "makerstockSku": "ACR-BLK-062-24-24",
+          "makerstockSku36": "ACR-BLK-062-24-36"
+        },
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "ACR-BLK-125-12-12",
+          "makerstockSku": "ACR-BLK-125-24-24",
+          "makerstockSku36": "ACR-BLK-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "ACR-BLK-250-12-12",
+          "makerstockSku": "ACR-BLK-250-24-24",
+          "makerstockSku36": "ACR-BLK-250-24-36"
+        }
+      ],
+      "category": "acrylic",
+      "finish": "solid"
+    },
+    {
+      "id": "acrylic-white",
+      "name": "White Acrylic (Opaque)",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "white-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/16\" (1.5 mm)",
+          "in": 0.0625,
+          "makerstockSku12": "ACR-WHT-062-12-12",
+          "makerstockSku": "ACR-WHT-062-24-24",
+          "makerstockSku36": "ACR-WHT-062-24-36"
+        },
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "ACR-WHT-125-12-12",
+          "makerstockSku": "ACR-WHT-125-24-24",
+          "makerstockSku36": "ACR-WHT-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "ACR-WHT-250-12-12",
+          "makerstockSku": "ACR-WHT-250-24-24",
+          "makerstockSku36": "ACR-WHT-250-24-36"
+        }
+      ],
+      "category": "acrylic",
+      "finish": "solid"
+    },
+    {
+      "id": "acrylic-red",
+      "name": "Red Acrylic (Opaque)",
+      "category": "acrylic",
+      "finish": "solid",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "red-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "OPA-RED-125-12-12",
+          "makerstockSku": "OPA-RED-125-24-24",
+          "makerstockSku36": "OPA-RED-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "OPA-RED-250-12-12",
+          "makerstockSku": "OPA-RED-250-24-24",
+          "makerstockSku36": "OPA-RED-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-blue",
+      "name": "Blue Acrylic (Opaque)",
+      "category": "acrylic",
+      "finish": "solid",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "blue-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "OPA-DBL-125-12-12",
+          "makerstockSku": "OPA-DBL-125-24-24",
+          "makerstockSku36": "OPA-DBL-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "OPA-DBL-250-12-12",
+          "makerstockSku": "OPA-DBL-250-24-24",
+          "makerstockSku36": "OPA-DBL-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-green",
+      "name": "Green Acrylic (Opaque)",
+      "category": "acrylic",
+      "finish": "solid",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "green-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "OPA-GRN-125-12-12",
+          "makerstockSku": "OPA-GRN-125-24-24",
+          "makerstockSku36": "OPA-GRN-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "OPA-GRN-250-12-12",
+          "makerstockSku": "OPA-GRN-250-24-24",
+          "makerstockSku36": "OPA-GRN-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-red-trans",
+      "name": "Red Acrylic (Transparent)",
+      "category": "acrylic",
+      "finish": "transparent",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "red-transparent-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/16\" (1.5 mm)",
+          "in": 0.0625,
+          "makerstockSku12": "TRN-RED-062-12-12",
+          "makerstockSku": "TRN-RED-062-24-24",
+          "makerstockSku36": "TRN-RED-062-24-36"
+        },
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "TRN-RED-125-12-12",
+          "makerstockSku": "TRN-RED-125-24-24",
+          "makerstockSku36": "TRN-RED-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "TRN-RED-250-12-12",
+          "makerstockSku": "TRN-RED-250-24-24",
+          "makerstockSku36": "TRN-RED-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-blue-trans",
+      "name": "Blue Acrylic (Transparent)",
+      "category": "acrylic",
+      "finish": "transparent",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "blue-transparent-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/16\" (1.5 mm)",
+          "in": 0.0625,
+          "makerstockSku12": "TRN-BLU-062-12-12",
+          "makerstockSku": "TRN-BLU-062-24-24",
+          "makerstockSku36": "TRN-BLU-062-24-36"
+        },
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "TRN-BLU-125-12-12",
+          "makerstockSku": "TRN-BLU-125-24-24",
+          "makerstockSku36": "TRN-BLU-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "TRN-BLU-250-12-12",
+          "makerstockSku": "TRN-BLU-250-24-24",
+          "makerstockSku36": "TRN-BLU-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-frosted-white",
+      "name": "Frosted White Acrylic",
+      "category": "acrylic",
+      "finish": "frosted",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "frosted-acrylic-sheet",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "FST-WHT-125-12-12",
+          "makerstockSku": "FST-WHT-125-24-24",
+          "makerstockSku36": "FST-WHT-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-mirror-silver",
+      "name": "Silver Mirror Acrylic",
+      "category": "acrylic",
+      "finish": "mirror",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "acrylic-mirrored",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "MIR-CLR-125-12-12",
+          "makerstockSku": "MIR-CLR-125-24-24",
+          "makerstockSku36": "MIR-CLR-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-mirror-gold",
+      "name": "Gold Mirror Acrylic",
+      "category": "acrylic",
+      "finish": "mirror",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "acrylic-gold-mirrored-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "MIR-GLD-125-12-12",
+          "makerstockSku": "MIR-GLD-125-24-24",
+          "makerstockSku36": "MIR-GLD-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-glitter-gold",
+      "name": "Gold Glitter Acrylic",
+      "category": "acrylic",
+      "finish": "glitter",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "acrylic-glitter-gold",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "GLI-GOL-125-12-12",
+          "makerstockSku": "GLI-GOL-125-24-24",
+          "makerstockSku36": "GLI-GOL-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-glitter-silver",
+      "name": "Silver Glitter Acrylic",
+      "category": "acrylic",
+      "finish": "glitter",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "acrylic-glitter-silver",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "GLI-SIL-125-12-12",
+          "makerstockSku": "GLI-SIL-125-24-24",
+          "makerstockSku36": "GLI-SIL-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-pearl-white",
+      "name": "Pearl White Acrylic",
+      "category": "acrylic",
+      "finish": "pearl",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "acrylic-pearlescent-white",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "PEA-WHT-125-12-12",
+          "makerstockSku": "PEA-WHT-125-24-24",
+          "makerstockSku36": "PEA-WHT-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-fluor-pink",
+      "name": "Pink Fluorescent Acrylic",
+      "category": "acrylic",
+      "finish": "fluorescent",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "pink-fluorescent-acrylic",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "FLU-PNK-125-12-12",
+          "makerstockSku": "FLU-PNK-125-24-24",
+          "makerstockSku36": "FLU-PNK-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku12": "FLU-PNK-250-12-12",
+          "makerstockSku": "FLU-PNK-250-24-24",
+          "makerstockSku36": "FLU-PNK-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "acrylic-pastel-blue",
+      "name": "Blue Pastel Acrylic",
+      "category": "acrylic",
+      "finish": "pastel",
+      "machine": "acrylic",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.25,
+      "densityLbIn3": 0.043,
+      "makerstockHandle": "acrylic-pastel-pastel-blue",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku12": "PAS-BLU-125-12-12",
+          "makerstockSku": "PAS-BLU-125-24-24",
+          "makerstockSku36": "PAS-BLU-125-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-black-baltic-birch-plywood",
+      "name": "Black Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "black-baltic-birch-plywood-1-8-3mm",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-EBY1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-EBY1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-blue-baltic-birch-plywood",
+      "name": "Blue Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "blue-baltic-birch-plywood-1-8-3mm",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-BLU1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-BLU1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-cinnamon-brown-baltic-birch-plywood",
+      "name": "Cinnamon Brown Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "cinnamon-brown-baltic-birch-plywood-1-8-3mm",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-CIN1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-CIN1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-empire-red-baltic-birch-plywood",
+      "name": "Empire Red Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "empire-red-baltic-birch-plywood",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-RED1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-RED1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-forest-green-baltic-birch-plywood",
+      "name": "Forest Green Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "dyed-baltic-birch-plywood",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-GRN1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-GRN1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-medium-brown-baltic-birch-plywood",
+      "name": "Medium Brown Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "medium-brown-baltic-birch-plywood-1-8-3mm",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-MBN1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-MBN1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-merlot-red-baltic-birch-plywood",
+      "name": "Merlot Red Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "merlot-red-baltic-birch-plywood-1-8-3mm",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-MER1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-MER1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-orange-baltic-birch-plywood",
+      "name": "Orange Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "orange-baltic-birch-plywood-copy",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-ORG1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-ORG1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-yellow-baltic-birch-plywood",
+      "name": "Yellow Baltic Birch Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "dyed birch",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "yellow-baltic-birch-plywood-1-8-3mm",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-YLW1S-CLRNO-125-12-12"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "",
+          "makerstockSku12": "BAL-YLW1S-CLRNO-250-12-12"
+        }
+      ]
+    },
+    {
+      "id": "wood-eucalyptus-hardboard-panel",
+      "name": "Eucalyptus Hardboard Panel",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "MDF & hardboard",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.035,
+      "makerstockHandle": "eucaboard-hardboard-eucalyptus-hardboard",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "HAR-NAT-125-24-24",
+          "makerstockSku8": "HAR-NAT-125-8-12",
+          "makerstockSku12": "HAR-NAT-125-12-12",
+          "makerstockSku36": "HAR-NAT-125-24-36"
+        },
+        {
+          "label": "3/16\" (4.8 mm)",
+          "in": 0.1875,
+          "makerstockSku": "HAR-NAT-250-24-24",
+          "makerstockSku8": "HAR-NAT-250-8-12",
+          "makerstockSku12": "HAR-NAT-250-12-12",
+          "makerstockSku36": "HAR-NAT-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-fabricut-polybak-board",
+      "name": "FabriCut (Polybak) Board",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "MDF & hardboard",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "polybak",
+      "thicknesses": [
+        {
+          "label": "0.020\" (0.5 mm)",
+          "in": 0.02,
+          "makerstockSku": "POL-BRN-002-24-24",
+          "makerstockSku12": "POL-BRN-002-12-12",
+          "makerstockSku36": "POL-BRN-002-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-mdf",
+      "name": "MDF (Draft Board)",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "MDF & hardboard",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "mdf",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "MDF-NAT-125-24-24",
+          "makerstockSku8": "MDF-NAT-125-8-12",
+          "makerstockSku12": "MDF-NAT-125-12-12",
+          "makerstockSku36": "MDF-NAT-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "MDF-NAT-250-24-24",
+          "makerstockSku8": "MDF-NAT-250-8-12",
+          "makerstockSku12": "MDF-NAT-250-12-12",
+          "makerstockSku36": "MDF-NAT-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-melamine-with-mdf-core-black",
+      "name": "Melamine with MDF Core — Black",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "melamine",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "melamine-with-mdf-core-black-gray-or-white",
+      "thicknesses": [
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "MDF-MBK-250-24-24",
+          "makerstockSku8": "MDF-MBK-250-8-12",
+          "makerstockSku12": "MDF-MBK-250-12-12",
+          "makerstockSku36": "MDF-MBK-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-melamine-with-mdf-core-fog-gray",
+      "name": "Melamine with MDF Core — Fog Gray",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "melamine",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "melamine-with-mdf-core-black-gray-or-white",
+      "thicknesses": [
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "MDF-MGY-250-24-24",
+          "makerstockSku8": "MDF-MGY-250-8-12",
+          "makerstockSku12": "MDF-MGY-250-12-12",
+          "makerstockSku36": "MDF-MGY-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-melamine-with-mdf-core-light-gray-dark-gray",
+      "name": "Melamine with MDF Core — Light Gray/Dark Gray",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "melamine",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "melamine-with-mdf-core-black-gray-or-white",
+      "thicknesses": [
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "MDF-GRY-250-24-24",
+          "makerstockSku8": "MDF-GRY-250-8-12",
+          "makerstockSku12": "MDF-GRY-250-12-12",
+          "makerstockSku36": "MDF-GRY-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-melamine-with-mdf-core-white",
+      "name": "Melamine with MDF Core — White",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "melamine",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "melamine-with-mdf-core-black-gray-or-white",
+      "thicknesses": [
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "MDF-WHT-250-24-24",
+          "makerstockSku8": "MDF-WHT-250-8-12",
+          "makerstockSku12": "MDF-WHT-250-12-12",
+          "makerstockSku36": "MDF-WHT-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-white-makerply-eucalyptus-plywood",
+      "name": "White MakerPly Eucalyptus Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "melamine",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "white-melamine-faced-eucalyptus-plywood",
+      "thicknesses": [
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "EUC-WHT-250-24-24",
+          "makerstockSku8": "EUC-WHT-250-8-12",
+          "makerstockSku12": "EUC-WHT-250-12-12",
+          "makerstockSku36": "EUC-WHT-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-baltic-birch-plywood",
+      "name": "Baltic Birch Plywood (B/BB)",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "plywood",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "baltic-birch-plywood",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "BAL-NAT-125-24-24",
+          "makerstockSku8": "BAL-NAT-125-8-12",
+          "makerstockSku12": "BAL-NAT-125-12-12",
+          "makerstockSku36": "BAL-NAT-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "BAL-NAT-250-24-24",
+          "makerstockSku8": "BAL-NAT-250-8-12",
+          "makerstockSku12": "BAL-NAT-250-12-12",
+          "makerstockSku36": "BAL-NAT-250-24-36"
+        },
+        {
+          "label": "3/8\" (9 mm)",
+          "in": 0.375,
+          "makerstockSku": "BAL-NAT-375-24-24",
+          "makerstockSku8": "BAL-NAT-375-8-12",
+          "makerstockSku12": "BAL-NAT-375-12-12",
+          "makerstockSku36": "BAL-NAT-375-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-birch-plywood-with-veneer-core-prefinished-one-side",
+      "name": "Birch Plywood with Veneer Core - Prefinished One Side",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "plywood",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "birch-plywood-with-veneer-core-prefinished-one-side",
+      "thicknesses": [
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "BIR-FIN-250-24-24",
+          "makerstockSku12": "BIR-FIN-250-12-12",
+          "makerstockSku36": "BIR-FIN-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-cherry-veneer-plywood",
+      "name": "Cherry Veneer Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "plywood",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "cherry-veneer-plywood",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "CVP-CHE-125-24-24",
+          "makerstockSku8": "CVP-CHE-125-8-12",
+          "makerstockSku12": "CVP-CHE-125-12-12",
+          "makerstockSku36": "CVP-CHE-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "CVP-CHE-250-24-24",
+          "makerstockSku8": "CVP-CHE-250-8-12",
+          "makerstockSku12": "CVP-CHE-250-12-12",
+          "makerstockSku36": "CVP-CHE-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-maple-plywood",
+      "name": "Maple Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "plywood",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "maple-veneer-with-plywood-core",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "MVP-MAP-125-24-24",
+          "makerstockSku8": "MVP-MAP-125-8-12",
+          "makerstockSku12": "MVP-MAP-125-12-12",
+          "makerstockSku36": "MVP-MAP-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "MVP-MAP-250-24-24",
+          "makerstockSku8": "MVP-MAP-250-8-12",
+          "makerstockSku12": "MVP-MAP-250-12-12",
+          "makerstockSku36": "MVP-MAP-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-red-oak-plywood",
+      "name": "Red Oak Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "plywood",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "red-oak-plywood-with-soft-veneer-core",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "OAK-SOF-125-24-24",
+          "makerstockSku8": "OAK-SOF-125-8-12",
+          "makerstockSku12": "OAK-SOF-125-12-12",
+          "makerstockSku36": "OAK-SOF-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "OAK-SOF-250-24-24",
+          "makerstockSku8": "OAK-SOF-250-8-12",
+          "makerstockSku12": "OAK-SOF-250-12-12",
+          "makerstockSku36": "OAK-SOF-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-walnut-veneer-plywood",
+      "name": "Walnut Veneer Plywood",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "plywood",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.024,
+      "makerstockHandle": "walnut-veneer-plywood",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "WVP-WAL-125-24-24",
+          "makerstockSku8": "WVP-WAL-125-8-12",
+          "makerstockSku12": "WVP-WAL-125-12-12",
+          "makerstockSku36": "WVP-WAL-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "WVP-WAL-250-24-24",
+          "makerstockSku8": "WVP-WAL-250-8-12",
+          "makerstockSku12": "WVP-WAL-250-12-12",
+          "makerstockSku36": "WVP-WAL-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-cherry-veneer-on-mdf",
+      "name": "Cherry Veneer on MDF",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer on MDF",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "cherry-veneer-with-mdf-core-medium-density-fiberboard-core",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "CVM-CHE-125-24-24",
+          "makerstockSku8": "CVM-CHE-125-8-12",
+          "makerstockSku12": "CVM-CHE-125-12-12",
+          "makerstockSku36": "CVM-CHE-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "CVM-CHE-250-24-24",
+          "makerstockSku8": "CVM-CHE-250-8-12",
+          "makerstockSku12": "CVM-CHE-250-12-12",
+          "makerstockSku36": "CVM-CHE-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-maple-veneer-on-mdf",
+      "name": "Maple Veneer on MDF",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer on MDF",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "maple-veneer-with-mdf-core",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "MVM-MAP-125-24-24",
+          "makerstockSku8": "MVM-MAP-125-8-12",
+          "makerstockSku12": "MVM-MAP-125-12-12",
+          "makerstockSku36": "MVM-MAP-125-24-36"
+        },
+        {
+          "label": "3/16\" (4.8 mm)",
+          "in": 0.1875,
+          "makerstockSku": "MVM-MAP-188-24-24",
+          "makerstockSku8": "MVM-MAP-188-8-12",
+          "makerstockSku12": "MVM-MAP-188-12-12",
+          "makerstockSku36": "MVM-MAP-188-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-red-oak-veneer-on-mdf",
+      "name": "Red Oak Veneer on MDF",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer on MDF",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "red-oak-veneer-with-mdf-core-medium-density-fiberboard-core",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "ROM-OAK-125-24-24",
+          "makerstockSku8": "ROM-OAK-125-8-12",
+          "makerstockSku12": "ROM-OAK-125-12-12",
+          "makerstockSku36": "ROM-OAK-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "ROM-OAK-250-24-24",
+          "makerstockSku8": "ROM-OAK-250-8-12",
+          "makerstockSku12": "ROM-OAK-250-12-12",
+          "makerstockSku36": "ROM-OAK-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-sapele-veneer-on-mdf",
+      "name": "Sapele Veneer on MDF",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer on MDF",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "sapele-veneer-with-mdf-draftboard-core",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "SVM-SAP-125-24-24",
+          "makerstockSku8": "SVM-SAP-125-8-12",
+          "makerstockSku12": "SVM-SAP-125-12-12",
+          "makerstockSku36": "SVM-SAP-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "SVM-SAP-250-24-24",
+          "makerstockSku8": "SVM-SAP-250-8-12",
+          "makerstockSku12": "SVM-SAP-250-12-12",
+          "makerstockSku36": "SVM-SAP-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-walnut-veneer-on-mdf",
+      "name": "Walnut Veneer on MDF",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer on MDF",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.028,
+      "makerstockHandle": "walnut-veneer-mdf",
+      "thicknesses": [
+        {
+          "label": "1/8\" (3 mm)",
+          "in": 0.125,
+          "makerstockSku": "WVM-WAL-125-24-24",
+          "makerstockSku8": "WVM-WAL-125-8-12",
+          "makerstockSku12": "WVM-WAL-125-12-12",
+          "makerstockSku36": "WVM-WAL-125-24-36"
+        },
+        {
+          "label": "1/4\" (6 mm)",
+          "in": 0.25,
+          "makerstockSku": "WVM-WAL-250-24-24",
+          "makerstockSku8": "WVM-WAL-250-8-12",
+          "makerstockSku12": "WVM-WAL-250-12-12",
+          "makerstockSku36": "WVM-WAL-250-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-bamboo-psa-veneer",
+      "name": "Bamboo PSA Veneer",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer sheet",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.02,
+      "makerstockHandle": "bamboo-psa-veneer-with-3m-adhesive",
+      "thicknesses": [
+        {
+          "label": "0.025\" (0.6 mm)",
+          "in": 0.025,
+          "makerstockSku": "PSA-BAM-025-24-24",
+          "makerstockSku12": "PSA-BAM-025-12-12",
+          "makerstockSku36": "PSA-BAM-025-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-cherry-psa-veneer",
+      "name": "Cherry PSA Veneer",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer sheet",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.02,
+      "makerstockHandle": "cherry-psa-veneer-with-3m-backing",
+      "thicknesses": [
+        {
+          "label": "0.025\" (0.6 mm)",
+          "in": 0.025,
+          "makerstockSku": "PSA-CHE-025-24-24",
+          "makerstockSku12": "PSA-CHE-025-12-12",
+          "makerstockSku36": "PSA-CHE-025-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-mahogany-psa-veneer",
+      "name": "Mahogany PSA Veneer",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer sheet",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.02,
+      "makerstockHandle": "mahogany-psa-veneer-with-3m-adhesive",
+      "thicknesses": [
+        {
+          "label": "0.025\" (0.6 mm)",
+          "in": 0.025,
+          "makerstockSku": "PSA-MGY-025-24-24",
+          "makerstockSku12": "PSA-MGY-025-12-12",
+          "makerstockSku36": "PSA-MGY-025-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-maple-psa-veneer",
+      "name": "Maple PSA Veneer",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer sheet",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.02,
+      "makerstockHandle": "maple-psa-veneer-with-3m-adhesive",
+      "thicknesses": [
+        {
+          "label": "0.025\" (0.6 mm)",
+          "in": 0.025,
+          "makerstockSku": "PSA-MAP-025-24-24",
+          "makerstockSku12": "PSA-MAP-025-12-12",
+          "makerstockSku36": "PSA-MAP-025-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-red-oak-psa-veneer",
+      "name": "Red Oak PSA Veneer",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer sheet",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.02,
+      "makerstockHandle": "red-oak-psa-veneer-with-3m-adhesive",
+      "thicknesses": [
+        {
+          "label": "0.025\" (0.6 mm)",
+          "in": 0.025,
+          "makerstockSku": "PSA-ROK-025-24-24",
+          "makerstockSku12": "PSA-ROK-025-12-12",
+          "makerstockSku36": "PSA-ROK-025-24-36"
+        }
+      ]
+    },
+    {
+      "id": "wood-walnut-psa-veneer",
+      "name": "Walnut PSA Veneer",
+      "machine": "co2-wood",
+      "category": "wood",
+      "finish": "veneer sheet",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.02,
+      "makerstockHandle": "walnut-psa-veneer-with-3m-adhesive",
+      "thicknesses": [
+        {
+          "label": "0.025\" (0.6 mm)",
+          "in": 0.025,
+          "makerstockSku": "PSA-WAL-025-24-24",
+          "makerstockSku12": "PSA-WAL-025-12-12",
+          "makerstockSku36": "PSA-WAL-025-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-black",
+      "name": "Cowhide Leather — Black",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-black",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-BLK-030-8-12",
+          "makerstockSku12": "COW-BLK-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-brown",
+      "name": "Cowhide Leather — Brown",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-brown",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-BRN-030-8-12",
+          "makerstockSku12": "COW-BRN-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-caramel",
+      "name": "Cowhide Leather — Caramel",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-caramel",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-CAR-030-8-12",
+          "makerstockSku12": "COW-CAR-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-dark-red",
+      "name": "Cowhide Leather — Dark Red",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-red",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-RED-030-8-12",
+          "makerstockSku12": "COW-RED-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-smooth-brown",
+      "name": "Cowhide Leather — Smooth Brown",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-smooth-brown",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-SBR-030-8-12",
+          "makerstockSku12": "COW-SBR-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-smooth-terra-cotta",
+      "name": "Cowhide Leather — Smooth Terra Cotta",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-smooth-terra-cotta",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-TER-030-8-12",
+          "makerstockSku12": "COW-TER-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-turquoise",
+      "name": "Cowhide Leather — Turquoise",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-turquoise",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-TUR-030-8-12",
+          "makerstockSku12": "COW-TUR-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-cowhide-white",
+      "name": "Cowhide Leather — White",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "cowhide",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.034,
+      "makerstockHandle": "leather-cowhide-white",
+      "thicknesses": [
+        {
+          "label": "0.030\" (~2 oz)",
+          "in": 0.03,
+          "makerstockSku": "",
+          "makerstockSku8": "COW-WHT-030-8-12",
+          "makerstockSku12": "COW-WHT-030-12-12"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-black",
+      "name": "Vegan Leather (PU) — Black",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-black",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-BLK-023-8-12",
+          "makerstockSku12": "VEG-BLK-023-12-12",
+          "makerstockSku36": "VEG-BLK-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-bone",
+      "name": "Vegan Leather (PU) — Bone",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-bone",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-BON-023-8-12",
+          "makerstockSku12": "VEG-BON-023-12-12",
+          "makerstockSku36": "VEG-BON-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-cranberry",
+      "name": "Vegan Leather (PU) — Cranberry",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-cranberry",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-CRA-023-8-12",
+          "makerstockSku12": "VEG-CRA-023-12-12",
+          "makerstockSku36": "VEG-CRA-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-graphite",
+      "name": "Vegan Leather (PU) — Graphite",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-gray",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-GRA-023-8-12",
+          "makerstockSku12": "VEG-GRA-023-12-12",
+          "makerstockSku36": "VEG-GRA-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-light-brown",
+      "name": "Vegan Leather (PU) — Light Brown",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-light-brown",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-LBR-023-8-12",
+          "makerstockSku12": "VEG-LBR-023-12-12",
+          "makerstockSku36": "VEG-LBR-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-mustard",
+      "name": "Vegan Leather (PU) — Mustard",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-mustard",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku12": "VEG-MUS-023-12-12",
+          "makerstockSku36": "VEG-MUS-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-plum",
+      "name": "Vegan Leather (PU) — Plum",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-plum",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-PLU-023-8-12",
+          "makerstockSku12": "VEG-PLU-023-12-12",
+          "makerstockSku36": "VEG-PLU-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-royal-blue",
+      "name": "Vegan Leather (PU) — Royal Blue",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "leather-vegan-royal-blue",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-ROY-023-8-12",
+          "makerstockSku12": "VEG-ROY-023-12-12",
+          "makerstockSku36": "VEG-ROY-023-24-36"
+        }
+      ]
+    },
+    {
+      "id": "leather-vegan-slate",
+      "name": "Vegan Leather (PU) — Slate",
+      "machine": "co2-leather",
+      "category": "leather",
+      "finish": "vegan",
+      "fullSheetMin": true,
+      "assistGas": "air",
+      "airMaxThicknessIn": 0.5,
+      "densityLbIn3": 0.04,
+      "makerstockHandle": "vegan-leather-slate",
+      "thicknesses": [
+        {
+          "label": "0.023\" (0.6 mm)",
+          "in": 0.023,
+          "makerstockSku": "",
+          "makerstockSku8": "VEG-SLT-023-8-12",
+          "makerstockSku12": "VEG-SLT-023-12-12",
+          "makerstockSku36": "VEG-SLT-023-24-36"
+        }
+      ]
+    }
+  ]
+}
