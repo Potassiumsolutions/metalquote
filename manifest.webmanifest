@@ -1,0 +1,14 @@
+{
+  "name": "Cut Part Quote",
+  "short_name": "Cut Quote",
+  "description": "Instant quotes for laser-cut parts.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f1420",
+  "theme_color": "#0f1420",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
